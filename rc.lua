@@ -10,6 +10,8 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+beautiful.init("~/.config/awesome/theme.lua")
+beautiful.font = "Sans 10"
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
