@@ -2,4 +2,4 @@
 #start pulseaudio
 pulseaudio --start &
 
-~/life/bin/awmClamshell.sh
+~/life/bin/awmClamshell.sh &
