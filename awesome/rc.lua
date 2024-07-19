@@ -59,6 +59,8 @@ end
 -- }}}
 
 -- {{{ Variable definitions
+-- Themes define colours, icons, font and wallpapers.
+beautiful.init("/home/slava/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -202,7 +204,7 @@ local function set_wallpaper(s)
 	end
 end
 
--- Re-set wallpaper when a creen's geometry changes (e.g. different resolution)
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
@@ -297,13 +299,10 @@ awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 	--lock screen
-	awful.key({ modkey }, "o", function()
+	awful.key({ modkey, "Control" }, "l", function()
 		awful.spawn("i3lock")
 	end, { description = "lock screen", group = "awesome" }),
-	awful.key({ modkey }, "s", function()
-		awful.spawn("flameshot gui")
-	end, { description = "screenshot", group = "awesome" }),
-	-- awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
@@ -344,7 +343,7 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-	awful.key({ modkey, "Shift" }, "e", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
@@ -420,9 +419,9 @@ clientkeys = gears.table.join(
 	awful.key({ modkey, "Control" }, "Return", function(c)
 		c:swap(awful.client.getmaster())
 	end, { description = "move to master", group = "client" }),
-	-- awful.key({ modkey }, "o", function(c)
-	-- 	c:move_to_screen()
-	-- end, { description = "move to screen", group = "client" }),
+	awful.key({ modkey }, "o", function(c)
+		c:move_to_screen()
+	end, { description = "move to screen", group = "client" }),
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
@@ -508,7 +507,6 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
-
 awful.rules.rules = {
 	-- All clients will match this rule.
 	{

@@ -8,15 +8,14 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
--- theme.wallpaper = "~/life/media/wallpapers/kh3title2x.png"
-theme.wallpaper = "~/life/media/wallpapers/tilekh2x.png"
+theme.wallpaper = "~/life/media/wallpapers/ghibliHappyBuilding.jpg"
 -- }}}
 
 -- {{{ Styles
 theme.font = "sans 8"
 
 -- {{{ Colors
-theme.fg_normal = "#ACACAC"
+theme.fg_normal = "#DCDCCC"
 theme.fg_focus = "#F0DFAF"
 theme.fg_urgent = "#CC9393"
 theme.bg_normal = "#3F3F3F"
@@ -26,10 +25,10 @@ theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.useless_gap = dpi(2)
-theme.border_width = dpi(4)
-theme.border_normal = "#1F1F1F"
-theme.border_focus = "#8F8F8F"
+theme.useless_gap = 5
+theme.border_width = 2
+theme.border_normal = "#3F3F3F"
+theme.border_focus = "#6F6F6F"
 theme.border_marked = "#CC9393"
 -- }}}
 
